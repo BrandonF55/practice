@@ -20,7 +20,7 @@ module.exports = {
     new ESLintPlugin(),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: 'UPDATE NAME HERE',
+      title: 'practice',
       template: './src/index.html',
       inject: 'body'
     }),
@@ -47,7 +47,7 @@ module.exports = {
       {
         test: /\.html$/,
         use: [
-          'html-loader'
+          
         ]
       },
     ]
