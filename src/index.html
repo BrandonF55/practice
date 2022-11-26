@@ -4,20 +4,16 @@
   <title>Currency Exchanger</title>
 </head>
 <body>
-  <h1>!Currency Exchanger!</h1>
+  <h1>Currency Exchanger</h1>
 
-<form>
+<form action="">
 <div>
-  <label for="currency-amount">Enter The Amount Of Currency You Want to Exchange</label>
-  <input type="interger" name="usd-input" id="usd-input" placeholder="Enter Amount"><br><br>
-<label for="currency-input">Choose Currency</label>
-<select id="currency-type">
-  <option value="AED">United Arab Emirates</option>
-  <option value="AFN">Afghan Afghani</option>
-  <option value="DKK"> Danish Krone</option>
-  <option value="AMD">Armenian Dram</option>
-  <option value="ANG">Netherlands Antillean Guilder</option>
-</select>
+<label for="currency-amount">Enter The Amount To Exchange:</label>
+<input type="text" name="amount" id="amount" placeholder="Enter Amount" placeholder="$0.00"><br><br>
+<label for="firstCurrency">Choose Currency</label><br><br>
+<input type="text" id="firstCurrency" minlength="3" maxlength="3" placeholder="USD"><br><br>
+<label for="wantedCurrency">Currency That You Want To Convert.</label>
+<input type="text"  id="wantedCurrency" minlength="3" minleangth="3" placeholder="EUR"><br><br>
 <button id="btn" type="submit">Submit!</button>
 </div>
 </form>

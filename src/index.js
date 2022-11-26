@@ -1,56 +1,53 @@
 
-// import CurrencyService from './js/currencyExchanger.js';
+// Business Logic
 
+import CurrencyExchanger from './js/currencyExchanger.js';
 
-
-// // Business Logic_______________
-
-// function getCurrency(currency, usd) {
-//   let promise = CurrencyService.getCurrency(currency, usd);
-//   promise.then(function (conversion_rates) {
-//     printElements(conversion_rates);
-//   }, function (error) {
-//     printError(error);
-
-//     console.log(getCurrency);
+function getCurrency(firstCurrency, wantedCurrency, amount) {
+  let promise = CurrencyExchanger.getCurrency(firstCurrency, wantedCurrency, amount);
+  promise.then(function (response, conversion_rates) {
+    printElements(response, conversion_rates, wantedCurrency);
+  }, function (error) {
+    printError(error);
+    console.log(getCurrency);
    
-//   });
+  });
 
-// }
+}
 
+// UI Logic_______________
 
-// // UI Logic_______________
-
-
-// function printElements(response, currency, usd) {
-//   let exchangeAmount = response.conversion_rates;
-// document.querySelector("#output").innerHTML = `The exchange in ${usd} to ${currency} is worth ${exchangeAmount} `;
-// }
-
+function printElements(response, firstCurrency, wantedCurrency) {
+  let exchangeAmount = response.conversion_rates;
+  console.log(response);
+document.querySelector("#output").innerHTML = `The exchange in ${firstCurrency} to ${wantedCurrency} is worth ${exchangeAmount} `;
+}
 
 
-// function printError(error) {
-//   let output = document.getElementById("output");
-//   output.innerHTML = null;
-//   if (error.toString().includes('404')) {
-//     output.innerHTML = printError();
-//   } else {
-//     output.innerHTML = printError();
-//   }
+
+function printError(error, firstCurrency, wantedCurrency) {
+  let output = document.getElementById("output");
+  output.innerHTML = null;
+  if (error.toString().includes('404')) {
+    output.innerHTML = `${error} with ${firstCurrency} Or With ${wantedCurrency} Please Make a Different choice`;
+  } else {
+    output.innerHTML = `There is an error with your choices. Please make a different choice.`;
+  }
 
 
-//   function handleSubit(event) {
-//     event.preventDefault();
-//     output.innerHTML = null;
-//     const currency = document.getElementById("currency-type").value;
-//     const usd = parseInt.getElementById("usd-input");
 
-//     getCurrency(currency, usd);
-//     console.log(getCurrency);
-//   }
+  function handleSubmit(event) {
+    event.preventDefault();
+    output.innerHTML = null;
+    const amount = document.getElementById("amount").value;
+    const firstCurrency = document.getElementById("firstCurrency").value;
+    const wantedCurrency = parseInt.getElementById("wantedCurrency").value;
+    getCurrency(firstCurrency, wantedCurrency, amount);
+    console.log(getCurrency);
+  }
 
-//   window.addEventListener("load", function () {
-//     this.document.querySelector("form").addEventListener("submit", handleSubit);
+  window.addEventListener("load", function () {
+    this.document.querySelector("form").addEventListener("submit", handleSubmit);
 
-//   });
-// }
+  });
+}
